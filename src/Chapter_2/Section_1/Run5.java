@@ -1,4 +1,4 @@
-package Chapter_2.Section_1.detail_1;
+package Chapter_2.Section_1;
 
 /**
  * @author boboan

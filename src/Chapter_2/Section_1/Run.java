@@ -1,16 +1,13 @@
-package Chapter_2.Section_1.detail_1;
-
-
+package Chapter_2.Section_1;
 
 /**
  * @author boboan
  * @version V1.0
- * @description 1）A线程先持有对象 LOCK 锁， B线程是可以异步调用对象中非synchronized类型的方法。
- *              2）A线程先持有对象 LOCK 锁，B线程调用对象中的synchronized类型方法，需要等待。
- *              3）synchronized可以解决脏读的情况
- * @date 2018-05-28-下午3:55
+ * @description 1)方法内的变量为线程安全的
+ * @date 2018-05-28-下午2:12
  **/
-public class Run4 {
+public class Run {
+
     public static void main(String[] args) {
         HasSelfPrivateNum hasSelfPrivateNum = new HasSelfPrivateNum();
         MyThreadA myThreadA = new MyThreadA(hasSelfPrivateNum);
@@ -24,12 +21,12 @@ public class Run4 {
 
         public MyThreadA(HasSelfPrivateNum hasSelfPrivateNum) {
             this.hasSelfPrivateNum = hasSelfPrivateNum;
+            hasSelfPrivateNum.addNum("a");
         }
 
         @Override
         public void run() {
             super.run();
-            hasSelfPrivateNum.addNum("a");
 
         }
     }
@@ -43,27 +40,22 @@ public class Run4 {
         @Override
         public void run() {
             super.run();
-            hasSelfPrivateNum.addNumB("b");
+            hasSelfPrivateNum.addNum("b");
         }
     }
     static class HasSelfPrivateNum {
 
-        private int num = 0;
-       synchronized public void addNum(String name){
+        public void addNum(String name){
             try {
+                int num = 0;
+                if (name.equals("a")) {
                     num = 100;
                     System.out.println("a set over");
-                System.out.println(name+"; num ="+num);
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-       synchronized public void addNumB(String name){
-            try {
+                    Thread.sleep(2000);
+                }else {
                     num = 200;
                     System.out.println("other set over");
+                }
                 System.out.println(name+"; num ="+num);
 
 

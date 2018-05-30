@@ -1,19 +1,18 @@
-package Chapter_2.Section_1.detail_1;
+package Chapter_2.Section_1;
 
 
 
 /**
  * @author boboan
  * @version V1.0
- * @description 多个线程访问多个对象，则JVM会创建多个锁。会异步进行
+ * @description 多个线程访问一个对象中的实例，有可能出现线程安全问题。加上synchronized即可解决
  * @date 2018-05-28-下午3:55
  **/
-public class Run3 {
+public class Run2 {
     public static void main(String[] args) {
         HasSelfPrivateNum hasSelfPrivateNum = new HasSelfPrivateNum();
-        HasSelfPrivateNum hasSelfPrivateNum2 = new HasSelfPrivateNum();
         MyThreadA myThreadA = new MyThreadA(hasSelfPrivateNum);
-        MyThreadB myThreadB = new MyThreadB(hasSelfPrivateNum2);
+        MyThreadB myThreadB = new MyThreadB(hasSelfPrivateNum);
         myThreadA.start();
         myThreadB.start();
 
@@ -29,7 +28,6 @@ public class Run3 {
         public void run() {
             super.run();
             hasSelfPrivateNum.addNum("a");
-
         }
     }
     static class MyThreadB extends Thread{
@@ -53,7 +51,7 @@ public class Run3 {
                 if (name.equals("a")) {
                     num = 100;
                     System.out.println("a set over");
-                    Thread.sleep(2000);
+//                    Thread.sleep(2000);
                 }else {
                     num = 200;
                     System.out.println("other set over");
