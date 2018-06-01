@@ -1,14 +1,13 @@
 package Chapter_3.Section_1;
 
 /**
- * <p>@description: 1)notify()一次只能唤醒一个线程。
- *                  2）notify()多次调用可以唤醒其他线程。
+ * <p>@description: 1)当线程数很多的时候，之间用notifyAll()唤醒所有线程
  *
  * @author boboan
  * @version V1.0
  * @date 2018-06-01-上午9:24
  **/
-public class Test5 {
+public class Test6 {
     public static void main(String[] args) {
 
         ObjService objService = new ObjService();
@@ -109,10 +108,7 @@ public class Test5 {
             super.run();
             synchronized (object){
                 System.out.println("唤醒线程："+Thread.currentThread().getName());
-                object.notify();
-                object.notify();
-                object.notify();
-                object.notify();
+                object.notifyAll();
             }
         }
     }
