@@ -4,7 +4,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * <p>@description: ReentrantLock 类也是同步执行的
+ * <p>@description: ReentrantLock 类也是同步执行的,一样能实现同步互斥效果。
  *
  * @author boboan
  * @version V1.0
