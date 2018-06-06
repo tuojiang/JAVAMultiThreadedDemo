@@ -11,7 +11,7 @@ Chapter 5
     - schedule(TimerTask var1, Date var2, long var3) -- 在指定日期之后，按指定周期无限循环执行某一任务。
     - schedule(TimerTask var1, long var2) -- 以当前时间为参考，延迟指定毫秒数后执行某一任务
     - schedule(TimerTask var1, long var2, long var4) -- 以当前时间延迟指定毫秒数，在以某一时间间隔无限循环的执行某一任务
-    - scheduleAtFixedRate(TimerTask var1, long var2, long var4) -- 
+    - scheduleAtFixedRate(TimerTask var1, long var2, long var4) -- 以当前时间延迟指定毫秒数，在以某一时间间隔无限循环的执行某一任务
     - cancel(TimerTask类中) -- 是将自身从任务队列中清除
     - cancel(Timer类中) -- 是将任务队列中全部任务清除(偶尔是无效的原因是可能没抢到队列锁)
     

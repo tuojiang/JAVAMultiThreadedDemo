@@ -1,7 +1,7 @@
 Chapter 2
 ---
 有了第一章学习的一些基本 API 基础之后，第二章开始介绍Java 多线程中的同步以及出现了非线程安全的问题如何解决。
-作者给出的核心内容如下：
+核心内容如下：
 - synchronized 对象监视器为 Object 时的使用
 - synchronized 对象监视器为 Class 时的使用
 - 非线程安全是如何出现的
@@ -37,7 +37,7 @@ Chapter 2
     | 结果| 静态同步synchronized是对class上锁| synchronized添加到非静态方法是对对象上锁      |
     
 ### 3
-- Volatile -- 使变量在多个线程间课件
+- Volatile -- 使变量在多个线程间可见
     - Volatile 虽然增加了实例变量在多线程间的可见性，但是却不具备同步行，它是不具备原子性的。
       配合上synchronized即可解决问题。
     - AtomicInteger是原子类，也能够实现同步。
